@@ -107,7 +107,6 @@ for i in range(1,7):
         link = block.find('a')
         url = 'http://www.secamb.nhs.uk/about_us/' + link['href']
         link_text = link.text.strip()
-        print(link_text)
         if '.csv' in link_text:
             if 'Expenditure' in link_text:
                 if '25k.csv' in link_text:
