@@ -98,7 +98,7 @@ soup = BeautifulSoup(html, 'lxml')
 #### SCRAPE DATA
 
 
-for i in range(1,7):
+for i in range(1,8):
     page_url = "http://www.secamb.nhs.uk/about_us/document_library.aspx?cat=228&pageNum={}".format(i)
     html = urllib2.urlopen(page_url)
     soup = BeautifulSoup(html, 'lxml')
@@ -123,6 +123,9 @@ for i in range(1,7):
         else:
             csvMth = link_text.split()[-2][:3]
             csvYr = link_text.split()[-1]
+        if 'Rep' in csvMth:
+            csvMth = link_text.split()[1][:3]
+            csvYr = '20'+link_text.split()[1][-2:]
         csvMth = convert_mth_strings(csvMth.upper())
         data.append([csvYr, csvMth, url])
 
